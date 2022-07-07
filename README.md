@@ -1,6 +1,6 @@
-# odontologica-postreges
+# odontologica-postgres
 
-https://odontologica-postreges.herokuapp.com/
+https://odontologica-postgres.herokuapp.com/
 
 Trabajo integrador de la materia Backend I de CTD.
 
