@@ -35,41 +35,49 @@ window.addEventListener('load', function () {
             body: JSON.stringify(formData)
         }
 
-        fetch(url, settings)
-            .then(response => response.json())
-            .then(data => {
-                if (data.id){
-                 //Si no hay ningun error se muestra un mensaje diciendo que el paciente
-                 //se agrego bien
+        let error = false;
+        fetch(url,settings)
+        .then(res => {
+            if(!res.ok){
+                console.log('Ocurrió un error de tipo ' + res.status)
+                error = true;
+            }
+            return res.json();
+        })
+        .then(data =>{
+            if (error) {
+                //Si hay algun error se muestra un mensaje diciendo que el paciente
+                //no se pudo guardar y se intente nuevamente
+                Swal.fire(
+                    'Maldición!',
+                    'Hubo un problema: ' + data,
+                    'error'
+                )
+            }
+            else{
+                //Si no hay ningun error se muestra un mensaje diciendo que el paciente
+                //se agrego bien
 
-                 Swal.fire(
+                Swal.fire(
                     'Correcto!',
                     'Ya registramos a ' + data.nombre + ' ' + data.apellido + ' como nuevo paciente!',
                     'success'
-                  )
+                )
+                //se dejan todos los campos vacíos por si se quiere ingresar otro paciente
+                resetUploadForm();
+            }
+        })
+        .catch(error => {
+            //Si hay algun error se muestra un mensaje diciendo que el paciente
+            //no se pudo guardar y se intente nuevamente
+            Swal.fire(
+                'Maldición!',
+                'No pudimos registrar este paciente. Parece que alguno de los datos ingresados no es correcto!' + error,
+                'error'
+            )
 
-                 resetUploadForm();
-                } else {
-                    //Si hay algun error se muestra un mensaje diciendo que el paciente
-                    //no se pudo guardar y se intente nuevamente
-                    Swal.fire(
-                        'Maldición!',
-                        'No pudimos registrar este paciente. Parece que alguno de los datos ingresados no es correcto!',
-                        'error'
-                      )
-                     //se dejan todos los campos vacíos por si se quiere ingresar otro paciente
-                };
-            })
-            .catch(error => {
-                    //Si hay algun error se muestra un mensaje diciendo que el paciente
-                    //no se pudo guardar y se intente nuevamente
-                    Swal.fire(
-                        'Maldición!',
-                        'No estamos teniendo conexión con el servidor.',
-                        'error'
-                      )
-                     //se dejan todos los campos vacíos por si se quiere ingresar otro paciente
-                     resetUploadForm();})
+        });
+
     });
 
     function fechaActual(){
