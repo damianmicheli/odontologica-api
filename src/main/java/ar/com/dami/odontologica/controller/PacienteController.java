@@ -1,7 +1,9 @@
 package ar.com.dami.odontologica.controller;
 
 import ar.com.dami.odontologica.dto.PacienteDTO;
+import ar.com.dami.odontologica.service.ConflictoException;
 import ar.com.dami.odontologica.service.IPacienteService;
+import ar.com.dami.odontologica.service.NoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,20 +19,10 @@ public class PacienteController {
     private IPacienteService pacienteService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<PacienteDTO> buscar(@PathVariable Long id){
+    public ResponseEntity<PacienteDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
 
-        ResponseEntity<PacienteDTO> response;
+        return new ResponseEntity<>(pacienteService.buscar(id), HttpStatus.OK);
 
-        PacienteDTO encontrado = pacienteService.buscar(id);
-
-        if ( encontrado == null) {
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        else {
-            response = new ResponseEntity<>(encontrado, HttpStatus.OK);
-        }
-
-        return response;
     }
 
     @GetMapping
@@ -46,25 +38,14 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<PacienteDTO> guardar(@RequestBody PacienteDTO pacienteDTO){
+    public ResponseEntity<PacienteDTO> guardar(@RequestBody PacienteDTO pacienteDTO) throws ConflictoException {
 
-        ResponseEntity<PacienteDTO> response;
-
-        PacienteDTO guardado = pacienteService.guardar(pacienteDTO);
-
-        if ( guardado == null) {
-            response = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        else {
-            response = new ResponseEntity<>(guardado, HttpStatus.OK);
-        }
-
-        return response;
+        return new ResponseEntity<>(pacienteService.guardar(pacienteDTO), HttpStatus.OK);
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Long id) {
+    public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
         ResponseEntity<String> response;
 
@@ -80,7 +61,7 @@ public class PacienteController {
     }
 
     @PutMapping
-    public ResponseEntity<PacienteDTO> actualizar(@RequestBody PacienteDTO pacienteDTO) {
+    public ResponseEntity<PacienteDTO> actualizar(@RequestBody PacienteDTO pacienteDTO) throws NoEncontradoException {
 
         ResponseEntity<PacienteDTO> response;
         Long id = pacienteDTO.getId();

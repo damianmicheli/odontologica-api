@@ -1,7 +1,9 @@
 package ar.com.dami.odontologica.controller;
 
 import ar.com.dami.odontologica.dto.OdontologoDTO;
+import ar.com.dami.odontologica.service.ConflictoException;
 import ar.com.dami.odontologica.service.IOdontologoService;
+import ar.com.dami.odontologica.service.NoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,20 +20,10 @@ public class OdontologoController {
     private IOdontologoService odontologoService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<OdontologoDTO> buscar(@PathVariable Long id){
+    public ResponseEntity<OdontologoDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
 
-        ResponseEntity<OdontologoDTO> response;
+        return new ResponseEntity<>(odontologoService.buscar(id), HttpStatus.OK);
 
-        OdontologoDTO encontrado = odontologoService.buscar(id);
-
-        if ( encontrado == null) {
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        else {
-            response = new ResponseEntity<>(encontrado, HttpStatus.OK);
-        }
-
-        return response;
     }
 
     @GetMapping
@@ -47,25 +39,14 @@ public class OdontologoController {
     }
 
     @PostMapping
-    public ResponseEntity<OdontologoDTO> guardar(@RequestBody OdontologoDTO odontologoDTO){
+    public ResponseEntity<OdontologoDTO> guardar(@RequestBody OdontologoDTO odontologoDTO) throws ConflictoException {
 
-        ResponseEntity<OdontologoDTO> response;
-
-        OdontologoDTO guardado = odontologoService.guardar(odontologoDTO);
-
-        if ( guardado == null) {
-            response = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        else {
-            response = new ResponseEntity<>(guardado, HttpStatus.OK);
-        }
-
-        return response;
+        return new ResponseEntity<>(odontologoService.guardar(odontologoDTO), HttpStatus.OK);
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Long id) {
+    public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
         ResponseEntity<String> response;
 
@@ -81,18 +62,9 @@ public class OdontologoController {
     }
 
     @PutMapping
-    public ResponseEntity<OdontologoDTO> actualizar(@RequestBody OdontologoDTO odontologoDTO) {
+    public ResponseEntity<OdontologoDTO> actualizar(@RequestBody OdontologoDTO odontologoDTO) throws NoEncontradoException {
 
-        ResponseEntity<OdontologoDTO> response;
-        Long id = odontologoDTO.getId();
-
-        if (odontologoService.buscar(id) == null){
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            response = new ResponseEntity<>(odontologoService.actualizar(odontologoDTO), HttpStatus.OK);
-        }
-
-        return response;
+        return new ResponseEntity<>(odontologoService.actualizar(odontologoDTO), HttpStatus.OK);
     }
 
 }

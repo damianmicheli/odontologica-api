@@ -35,7 +35,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteGuardarTest() {
+    void pacienteGuardarTest() throws ConflictoException, NoEncontradoException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -48,7 +48,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteBuscarTest() {
+    void pacienteBuscarTest() throws ConflictoException, NoEncontradoException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -60,7 +60,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteListarTodosTest() {
+    void pacienteListarTodosTest() throws ConflictoException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -75,7 +75,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteEliminarTest() {
+    void pacienteEliminarTest() throws ConflictoException, NoEncontradoException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -96,7 +96,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteActualizarTest() {
+    void pacienteActualizarTest() throws NoEncontradoException, ConflictoException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 

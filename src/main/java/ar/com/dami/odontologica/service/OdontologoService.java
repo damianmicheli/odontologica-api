@@ -23,7 +23,14 @@ public class OdontologoService implements IOdontologoService{
     private ObjectMapper mapper;
 
     @Override
-    public OdontologoDTO guardar(OdontologoDTO odontologoDTO) {
+    public OdontologoDTO guardar(OdontologoDTO odontologoDTO) throws ConflictoException {
+
+        String matricula = odontologoDTO.getMatricula();
+        Optional<Odontologo> encontrado = odontologoRepository.findByMatricula(matricula);
+
+        if (encontrado.isPresent()){
+            throw new ConflictoException("Ya existe un odontólogo con matrícula " + matricula + ".");
+        }
 
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
 
@@ -31,23 +38,35 @@ public class OdontologoService implements IOdontologoService{
 
         OdontologoDTO odontologoDTOGuardado = mapper.convertValue(odontologoGuardado,OdontologoDTO.class);
 
-        logger.info("Se guardo el odontologo: " + odontologoDTOGuardado);
+        logger.info("Se guardó el odontólogo: " + odontologoDTOGuardado);
 
         return odontologoDTOGuardado;
     }
 
     @Override
-    public OdontologoDTO buscar(Long id) {
+    public OdontologoDTO buscar(Long id) throws NoEncontradoException {
 
-        OdontologoDTO odontologoDTO = null;
         Optional<Odontologo> odontologo = odontologoRepository.findById(id);
 
-        if (odontologo.isPresent()){
-            odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
+        if (odontologo.isEmpty()){
+            throw new NoEncontradoException("Odontólogo con Id " + id + " no encontrado.");
         }
 
-        return odontologoDTO;
+        return mapper.convertValue(odontologo, OdontologoDTO.class);
     }
+
+    @Override
+    public OdontologoDTO buscarPorMatricula(String matricula) throws NoEncontradoException {
+
+        Optional<Odontologo> odontologo = odontologoRepository.findByMatricula(matricula);
+
+        if (odontologo.isEmpty()){
+            throw new NoEncontradoException("Odontólogo con Matricula " + matricula + " no encontrado.");
+        }
+
+        return mapper.convertValue(odontologo, OdontologoDTO.class);
+    }
+
 
     @Override
     public List<OdontologoDTO> listarTodos() {
@@ -68,7 +87,16 @@ public class OdontologoService implements IOdontologoService{
     }
 
     @Override
-    public OdontologoDTO actualizar(OdontologoDTO odontologoDTO) {
+    public OdontologoDTO actualizar(OdontologoDTO odontologoDTO) throws NoEncontradoException {
+
+        Long id = odontologoDTO.getId();
+
+        Optional<Odontologo> encontrado = odontologoRepository.findById(id);
+
+        if (encontrado.isEmpty()){
+            throw new NoEncontradoException("No se puede actualizar porque no existe un odontólogo con Id: " + id + ".");
+        }
+
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
 
         Odontologo odontologoRes = odontologoRepository.save(odontologo);

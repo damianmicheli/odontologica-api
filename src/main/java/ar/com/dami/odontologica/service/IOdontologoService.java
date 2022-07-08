@@ -6,10 +6,11 @@ import java.util.List;
 
 public interface IOdontologoService {
 
-    OdontologoDTO guardar (OdontologoDTO odontologoDTO);
-    OdontologoDTO buscar(Long id);
+    OdontologoDTO guardar (OdontologoDTO odontologoDTO) throws ConflictoException;
+    OdontologoDTO buscar(Long id) throws NoEncontradoException;
+    OdontologoDTO buscarPorMatricula(String matricula) throws NoEncontradoException;
     List<OdontologoDTO> listarTodos();
     void eliminar(Long id);
-    OdontologoDTO actualizar (OdontologoDTO odontologoDTO);
+    OdontologoDTO actualizar (OdontologoDTO odontologoDTO) throws NoEncontradoException;
 
 }

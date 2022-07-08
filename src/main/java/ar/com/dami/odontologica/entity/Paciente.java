@@ -19,6 +19,7 @@ public class Paciente {
     private Long id;
     private String apellido;
     private String nombre;
+    @Column(unique = true)
     private String dni;
     private LocalDate fechaIngreso;
 

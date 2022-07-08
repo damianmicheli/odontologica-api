@@ -4,6 +4,7 @@ import ar.com.dami.odontologica.dto.TurnoDTO;
 import ar.com.dami.odontologica.service.IOdontologoService;
 import ar.com.dami.odontologica.service.IPacienteService;
 import ar.com.dami.odontologica.service.ITurnoService;
+import ar.com.dami.odontologica.service.NoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,7 +60,7 @@ public class TurnoController {
 
 
     @PostMapping
-    public ResponseEntity<TurnoDTO> guardar(@RequestBody TurnoDTO turnoDTO) {
+    public ResponseEntity<TurnoDTO> guardar(@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException {
 
         ResponseEntity<TurnoDTO> response;
         Long odontologoId = turnoDTO.getOdontologo().getId();
@@ -92,7 +93,7 @@ public class TurnoController {
     }
 
     @PutMapping
-    public ResponseEntity<TurnoDTO> actualizar (@RequestBody TurnoDTO turnoDTO){
+    public ResponseEntity<TurnoDTO> actualizar (@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException {
 
         ResponseEntity<TurnoDTO> response;
         Long odontologoId = turnoDTO.getOdontologo().getId();

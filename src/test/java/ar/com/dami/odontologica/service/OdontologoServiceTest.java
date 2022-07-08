@@ -26,7 +26,7 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void odontologoGuardarTest() {
+    void odontologoGuardarTest() throws NoEncontradoException, ConflictoException {
 
         OdontologoDTO odontologo = crearNuevoOdontologo();
 
@@ -38,7 +38,7 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void odontologoBuscarTest() {
+    void odontologoBuscarTest() throws NoEncontradoException, ConflictoException {
 
         OdontologoDTO odontologo = crearNuevoOdontologo();
 
@@ -50,7 +50,7 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void odontologoListarTodosTest() {
+    void odontologoListarTodosTest() throws ConflictoException {
 
         OdontologoDTO odontologo = crearNuevoOdontologo();
 
@@ -65,7 +65,7 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void odontologoEliminarTest() {
+    void odontologoEliminarTest() throws NoEncontradoException, ConflictoException {
 
         OdontologoDTO odontologo = crearNuevoOdontologo();
 
@@ -88,7 +88,7 @@ class OdontologoServiceTest {
     }
 
     @Test
-    void odontologoActualizarTest() {
+    void odontologoActualizarTest() throws NoEncontradoException, ConflictoException {
 
         OdontologoDTO odontologo = crearNuevoOdontologo();
 

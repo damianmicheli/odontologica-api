@@ -55,7 +55,7 @@ class TurnoServiceTest {
         return paciente;
     }
 
-    public TurnoDTO crearNuevoTurno(){
+    public TurnoDTO crearNuevoTurno() throws ConflictoException {
 
         TurnoDTO turno = new TurnoDTO();
 
@@ -75,7 +75,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoGuardarTest() {
+    void turnoGuardarTest() throws ConflictoException {
 
         TurnoDTO turno = crearNuevoTurno();
 
@@ -89,7 +89,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoBuscarTest() {
+    void turnoBuscarTest() throws ConflictoException {
 
         TurnoDTO turno = crearNuevoTurno();
 
@@ -102,7 +102,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoListarTodosTest() {
+    void turnoListarTodosTest() throws ConflictoException {
         TurnoDTO turno = crearNuevoTurno();
 
 
@@ -117,7 +117,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoEliminarTest() {
+    void turnoEliminarTest() throws ConflictoException {
         TurnoDTO turno = crearNuevoTurno();
 
         TurnoDTO turnoGuardado = turnoService.guardar(turno);
@@ -137,7 +137,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoActualizarTest() {
+    void turnoActualizarTest() throws ConflictoException {
 
         TurnoDTO turno = crearNuevoTurno();
 
