@@ -7,6 +7,7 @@ target/
 ### Configuraciones del proyecto ###
 /src/main/resources/application.properties
 /src/main/resources/log4j.properties
+/src/main/resources/static/js/data.js
 
 ### STS ###
 .apt_generated
