@@ -26,12 +26,21 @@ public class IntegracionOdontologoTest {
     @Test
     public void registrarOdontologo() throws Exception {
         String json = "{\"nombre\":\"Juan\",\"apellido\": \"Ramirez\",\"matricula\": 349971960}";
-        MvcResult response = this.mockMvc.perform(MockMvcRequestBuilders.post("/odontologos")
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/odontologos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
+        Assert.assertFalse(response.getResponse().getContentAsString().isEmpty());
+    }
+
+    @Test
+    public void listarOdontologo() throws Exception {
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/odontologos")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
         Assert.assertFalse(response.getResponse().getContentAsString().isEmpty());
     }
 }
