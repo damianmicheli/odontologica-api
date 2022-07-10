@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,10 +18,11 @@ class OdontologoServiceTest {
     IOdontologoService odontologoService;
 
     public OdontologoDTO crearNuevoOdontologo(){
+        Random rand = new Random();
         OdontologoDTO odontologo = new OdontologoDTO();
-        odontologo.setNombre("Sujeto");
+        odontologo.setNombre("Odontologo");
         odontologo.setApellido("de Prueba");
-        odontologo.setMatricula("123355");
+        odontologo.setMatricula(String.valueOf(rand.nextInt(10000)));
 
         return odontologo;
     }
@@ -34,7 +36,7 @@ class OdontologoServiceTest {
 
         OdontologoDTO odontologoEncontrado = odontologoService.buscar(odontologoGuardado.getId());
 
-        assertEquals("Sujeto", odontologoEncontrado.getNombre());
+        assertEquals("Odontologo", odontologoEncontrado.getNombre());
     }
 
     @Test
@@ -46,17 +48,16 @@ class OdontologoServiceTest {
 
         OdontologoDTO odontologoEncontrado = odontologoService.buscar(odontologoGuardado.getId());
 
-        assertEquals("Sujeto", odontologoEncontrado.getNombre());
+        assertEquals("Odontologo", odontologoEncontrado.getNombre());
     }
 
     @Test
     void odontologoListarTodosTest() throws ConflictoException {
 
-        OdontologoDTO odontologo = crearNuevoOdontologo();
 
-        odontologoService.guardar(odontologo);
-        odontologoService.guardar(odontologo);
-        odontologoService.guardar(odontologo);
+        odontologoService.guardar(crearNuevoOdontologo());
+        odontologoService.guardar(crearNuevoOdontologo());
+        odontologoService.guardar(crearNuevoOdontologo());
 
         List<OdontologoDTO> odontologos = odontologoService.listarTodos();
 
@@ -75,13 +76,15 @@ class OdontologoServiceTest {
 
         OdontologoDTO odontologoEncontrado = odontologoService.buscar(id);
 
-        assertEquals("Sujeto", odontologoEncontrado.getNombre());
+        assertEquals("Odontologo", odontologoEncontrado.getNombre());
 
         odontologoService.eliminar(id);
 
-        OdontologoDTO odontologoNoEncontrado = odontologoService.buscar(id);
+        NoEncontradoException thrown = assertThrows(NoEncontradoException.class, () -> {
+            odontologoService.buscar(id);
+        });
 
-        assertNull(odontologoNoEncontrado);
+        assertEquals("Odontólogo con Id " + id + " no encontrado.", thrown.getMessage());
 
 
 
@@ -96,7 +99,7 @@ class OdontologoServiceTest {
 
         Long id = odontologoGuardado.getId();
 
-        assertEquals("Sujeto", odontologoGuardado.getNombre());
+        assertEquals("Odontologo", odontologoGuardado.getNombre());
 
         OdontologoDTO odontologoActualizar = odontologoGuardado;
         odontologoActualizar.setNombre("Doc. Emmet");

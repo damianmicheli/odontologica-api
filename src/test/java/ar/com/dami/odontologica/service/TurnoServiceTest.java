@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,16 +30,29 @@ class TurnoServiceTest {
     @Autowired
     IOdontologoService odontologoService;
 
+    private final LocalDateTime fechaTurno =
+            LocalDateTime
+                    .now()
+                    .withHour(15)
+                    .withMinute(30)
+                    .withSecond(0)
+                    .withNano(0)
+                    .plusMonths(1);
+
+
     public OdontologoDTO crearNuevoOdontologo(){
+        Random rand = new Random();
         OdontologoDTO odontologo = new OdontologoDTO();
-        odontologo.setNombre("Sujeto");
+        odontologo.setNombre("Odontologo");
         odontologo.setApellido("de Prueba");
-        odontologo.setMatricula("123355");
+        odontologo.setMatricula(String.valueOf(rand.nextInt(10000)));
 
         return odontologo;
     }
 
     public PacienteDTO crearPacienteNuevo(){
+        Random rand = new Random();
+
         Domicilio domicilio = new Domicilio();
         domicilio.setCalle("Don Bosco");
         domicilio.setNumero("5544");
@@ -46,9 +60,9 @@ class TurnoServiceTest {
         domicilio.setProvincia("CABA");
 
         PacienteDTO paciente = new PacienteDTO();
-        paciente.setNombre("Sujeto");
+        paciente.setNombre("Paciente");
         paciente.setApellido("de Prueba");
-        paciente.setDni("22334455");
+        paciente.setDni(String.valueOf(rand.nextInt(31000000)+2000000));
         paciente.setFechaIngreso(LocalDate.of(2002,5,5));
         paciente.setDomicilio(domicilio);
 
@@ -69,7 +83,8 @@ class TurnoServiceTest {
 
         turno.setPaciente(paciente);
         turno.setOdontologo(odontologo);
-        turno.setFechaHora(LocalDateTime.of(2022,5,4,18,30));
+
+        turno.setFechaHora(fechaTurno);
 
         return turno;
     }
@@ -78,6 +93,7 @@ class TurnoServiceTest {
     void turnoGuardarTest() throws ConflictoException {
 
         TurnoDTO turno = crearNuevoTurno();
+        turno.setFechaHora(fechaTurno.plusDays(5L));
 
         TurnoDTO turnoGuardado = turnoService.guardar(turno);
 
@@ -85,30 +101,36 @@ class TurnoServiceTest {
 
         TurnoDTO turnoEncontrado = turnoService.buscar(id);
 
-        assertEquals(LocalDateTime.of(2022,5,4,18,30), turnoEncontrado.getFechaHora());
+        assertEquals(fechaTurno.plusDays(5L), turnoEncontrado.getFechaHora());
     }
 
     @Test
     void turnoBuscarTest() throws ConflictoException {
 
         TurnoDTO turno = crearNuevoTurno();
-
+        turno.setFechaHora(fechaTurno.plusDays(10L));
 
         TurnoDTO turnoGuardado = turnoService.guardar(turno);
 
         TurnoDTO turnoEncontrado = turnoService.buscar(turnoGuardado.getId());
 
-        assertEquals(LocalDateTime.of(2022,5,4,18,30), turnoEncontrado.getFechaHora());
+        assertEquals(fechaTurno.plusDays(10L), turnoEncontrado.getFechaHora());
     }
 
     @Test
     void turnoListarTodosTest() throws ConflictoException {
         TurnoDTO turno = crearNuevoTurno();
+        turno.setFechaHora(fechaTurno.plusDays(15L));
+        turnoService.guardar(turno);
 
+        TurnoDTO turno2 = crearNuevoTurno();
+        turno2.setFechaHora(fechaTurno.plusDays(20L));
+        turnoService.guardar(turno2);
 
-        turnoService.guardar(turno);
-        turnoService.guardar(turno);
-        turnoService.guardar(turno);
+        TurnoDTO turno3 = crearNuevoTurno();
+        turno3.setFechaHora(fechaTurno.plusDays(25L));
+        turnoService.guardar(turno3);
+
 
         List<TurnoDTO> turnos = turnoService.listarTodos();
 
@@ -119,6 +141,7 @@ class TurnoServiceTest {
     @Test
     void turnoEliminarTest() throws ConflictoException {
         TurnoDTO turno = crearNuevoTurno();
+        turno.setFechaHora(fechaTurno.plusDays(30L));
 
         TurnoDTO turnoGuardado = turnoService.guardar(turno);
 
@@ -126,7 +149,7 @@ class TurnoServiceTest {
 
         TurnoDTO turnoEncontrado = turnoService.buscar(id);
 
-        assertEquals(LocalDateTime.of(2022,5,4,18,30), turnoEncontrado.getFechaHora());
+        assertEquals(fechaTurno.plusDays(30L), turnoEncontrado.getFechaHora());
 
         turnoService.eliminar(id);
 
@@ -140,12 +163,13 @@ class TurnoServiceTest {
     void turnoActualizarTest() throws ConflictoException {
 
         TurnoDTO turno = crearNuevoTurno();
+        turno.setFechaHora(fechaTurno.plusDays(35L));
 
         TurnoDTO turnoGuardado = turnoService.guardar(turno);
 
         Long id = turnoGuardado.getId();
 
-        assertEquals(LocalDateTime.of(2022,5,4,18,30), turnoGuardado.getFechaHora());
+        assertEquals(fechaTurno.plusDays(35L), turnoGuardado.getFechaHora());
 
         TurnoDTO turnoActualizar = turnoGuardado;
 
@@ -153,14 +177,14 @@ class TurnoServiceTest {
 
         Long idOdontologoNuevo = odontologoDTO.getId();
         turnoActualizar.getOdontologo().setId(idOdontologoNuevo);
-        turnoActualizar.setFechaHora(LocalDateTime.of(2022,6,4,18,30));
+        turnoActualizar.setFechaHora(fechaTurno.plusDays(40L));
 
 
         turnoService.actualizar(turnoActualizar);
 
         TurnoDTO turnoEncontrado = turnoService.buscar(id);
 
-        assertEquals(LocalDateTime.of(2022,6,4,18,30), turnoEncontrado.getFechaHora());
+        assertEquals(fechaTurno.plusDays(40L), turnoEncontrado.getFechaHora());
         assertEquals(idOdontologoNuevo,turnoEncontrado.getOdontologo().getId());
 
     }

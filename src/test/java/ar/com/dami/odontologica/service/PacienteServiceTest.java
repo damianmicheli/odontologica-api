@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,8 @@ class PacienteServiceTest {
     IPacienteService pacienteService;
 
     public PacienteDTO crearPacienteNuevo(){
+        Random rand = new Random();
+
         Domicilio domicilio = new Domicilio();
         domicilio.setCalle("Don Bosco");
         domicilio.setNumero("5544");
@@ -25,9 +28,9 @@ class PacienteServiceTest {
         domicilio.setProvincia("CABA");
 
         PacienteDTO paciente = new PacienteDTO();
-        paciente.setNombre("Sujeto");
+        paciente.setNombre("Paciente");
         paciente.setApellido("de Prueba");
-        paciente.setDni("22334455");
+        paciente.setDni(String.valueOf(rand.nextInt(31000000)+2000000));
         paciente.setFechaIngreso(LocalDate.of(2002,5,5));
         paciente.setDomicilio(domicilio);
 
@@ -44,7 +47,7 @@ class PacienteServiceTest {
         PacienteDTO pacienteEncontrado = pacienteService.buscar(pacienteGuardado.getId());
         System.out.println(pacienteEncontrado);
         System.out.println(pacienteEncontrado.getDomicilio().toString());
-        assertEquals("Sujeto", pacienteEncontrado.getNombre());
+        assertEquals("Paciente", pacienteEncontrado.getNombre());
     }
 
     @Test
@@ -56,17 +59,16 @@ class PacienteServiceTest {
 
         PacienteDTO pacienteEncontrado = pacienteService.buscar(pacienteGuardado.getId());
 
-        assertEquals("Sujeto", pacienteEncontrado.getNombre());
+        assertEquals("Paciente", pacienteEncontrado.getNombre());
     }
 
     @Test
     void pacienteListarTodosTest() throws ConflictoException {
 
-        PacienteDTO paciente = crearPacienteNuevo();
 
-        pacienteService.guardar(paciente);
-        pacienteService.guardar(paciente);
-        pacienteService.guardar(paciente);
+        pacienteService.guardar(crearPacienteNuevo());
+        pacienteService.guardar(crearPacienteNuevo());
+        pacienteService.guardar(crearPacienteNuevo());
 
         List<PacienteDTO> pacientes = pacienteService.listarTodos();
 
@@ -85,13 +87,17 @@ class PacienteServiceTest {
 
         PacienteDTO pacienteEncontrado = pacienteService.buscar(id);
 
-        assertEquals("Sujeto", pacienteEncontrado.getNombre());
+        assertEquals("Paciente", pacienteEncontrado.getNombre());
 
         pacienteService.eliminar(id);
 
-        PacienteDTO pacienteNoEncontrado = pacienteService.buscar(id);
 
-        assertNull(pacienteNoEncontrado);
+        NoEncontradoException thrown = assertThrows(NoEncontradoException.class, () -> {
+            pacienteService.buscar(id);
+        });
+
+            assertEquals("Paciente con Id " + id + " no encontrado.", thrown.getMessage());
+
 
     }
 
@@ -104,7 +110,7 @@ class PacienteServiceTest {
 
         Long id = pacienteGuardado.getId();
 
-        assertEquals("Sujeto", pacienteGuardado.getNombre());
+        assertEquals("Paciente", pacienteGuardado.getNombre());
 
         PacienteDTO pacienteActualizar = pacienteGuardado;
         pacienteActualizar.setNombre("Marty");
