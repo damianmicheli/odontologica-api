@@ -79,7 +79,7 @@ public class OdontologoService implements IOdontologoService{
     @Override
     public List<OdontologoDTO> listarTodos() {
 
-        List<Odontologo> odontologos = odontologoRepository.findAllByOrderByIdAsc();
+        List<Odontologo> odontologos = odontologoRepository.findAll();
         List<OdontologoDTO> odontologosDTO = new ArrayList<>();
 
         for (Odontologo odontologo : odontologos){

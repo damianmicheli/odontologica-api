@@ -9,7 +9,6 @@ import java.util.Optional;
 public interface IOdontologoRepository extends JpaRepository<Odontologo, Long> {
 
     Optional<Odontologo> findByMatricula(String matricula);
-    List<Odontologo> findAllByOrderByIdAsc();
 
 }
 
