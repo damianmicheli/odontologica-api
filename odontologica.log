@@ -3009,3 +3009,102 @@ update odontologo set apellido=?, matricula=?, nombre=? where id=? [23505-214]];
 [2022-07-11 15:11:48] [INFO] [OdontologoService:115] Se listaron todos los turnos.
 [2022-07-11 15:11:50] [INFO] [OdontologoService:115] Se listaron todos los turnos.
 [2022-07-11 15:11:53] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:19:12] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=1, apellido= Scott, nombre=Michael, dni=20555444, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@7151dd9d)
+[2022-07-11 15:19:12] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 15:19:12] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@2f006edf
+[2022-07-11 15:19:12] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@2f006edf
+[2022-07-11 15:19:12] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=1, apellido= Scott, nombre=Michael, dni=20555444, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@72e4ffa2)
+[2022-07-11 15:19:12] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 15:19:12] [ERROR] [GlobalExceptionHandler:34] El odontólogo con Id 1 ya tiene un turno asignado en ese horario.
+[2022-07-11 15:19:12] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:19:12] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=1, apellido= Scott, nombre=Michael, dni=20555444, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@7a0f1f9d)
+[2022-07-11 15:19:12] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 15:19:12] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@287dde94
+[2022-07-11 15:19:12] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@287dde94
+[2022-07-11 15:19:12] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 15:19:12] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=4, nombre=Juan, apellido=Perez, matricula=2204)
+[2022-07-11 15:19:12] [ERROR] [GlobalExceptionHandler:34] Ya existe un odontólogo con matrícula 2204.
+[2022-07-11 15:19:12] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=5, nombre=Juan, apellido=Perez, matricula=6307)
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=4, apellido=de Prueba, nombre=Paciente, dni=3513176, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@453de9d0)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=4, nombre=Odontologo, apellido=de Prueba, matricula=2342)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=4, apellido=de Prueba, nombre=Paciente, dni=3513176, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@206a465f)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=4, nombre=Odontologo, apellido=de Prueba, matricula=2342)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@c50d1b2
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@c50d1b2
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@3f3abe67
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=5, apellido=de Prueba, nombre=Paciente, dni=3016673, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@79194b1c)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=5, nombre=Odontologo, apellido=de Prueba, matricula=6052)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=5, apellido=de Prueba, nombre=Paciente, dni=3016673, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@6c4a1980)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=5, nombre=Odontologo, apellido=de Prueba, matricula=6052)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@4a0a93ce
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@4a0a93ce
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=6, nombre=Odontologo, apellido=de Prueba, matricula=2747)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=5, apellido=de Prueba, nombre=Paciente, dni=3016673, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@5e572ad6)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=6, nombre=Odontologo, apellido=de Prueba, matricula=2747)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:186] Se actualizará un turno. Datos originales: ar.com.dami.odontologica.dto.TurnoDTO@2052c49f
+[2022-07-11 15:19:14] [INFO] [OdontologoService:194] Datos actuales: ar.com.dami.odontologica.dto.TurnoDTO@1e8c741c
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@31e1c7c
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=6, apellido=de Prueba, nombre=Paciente, dni=27154151, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@56dae6)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=7, nombre=Odontologo, apellido=de Prueba, matricula=8721)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=6, apellido=de Prueba, nombre=Paciente, dni=27154151, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@5834298c)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=7, nombre=Odontologo, apellido=de Prueba, matricula=8721)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@28592982
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@28592982
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=7, apellido=de Prueba, nombre=Paciente, dni=25344292, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@21553c3a)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=8, nombre=Odontologo, apellido=de Prueba, matricula=2415)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=7, apellido=de Prueba, nombre=Paciente, dni=25344292, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@29b61bb)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=8, nombre=Odontologo, apellido=de Prueba, matricula=2415)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@14b4f462
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@14b4f462
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=8, apellido=de Prueba, nombre=Paciente, dni=11056298, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@48e859f7)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=9, nombre=Odontologo, apellido=de Prueba, matricula=9487)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=8, apellido=de Prueba, nombre=Paciente, dni=11056298, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@441d3ddf)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=9, nombre=Odontologo, apellido=de Prueba, matricula=9487)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@3678f32e
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@3678f32e
+[2022-07-11 15:19:14] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=9, apellido=de Prueba, nombre=Paciente, dni=19410119, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@5120886f)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=10, nombre=Odontologo, apellido=de Prueba, matricula=9279)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=9, apellido=de Prueba, nombre=Paciente, dni=19410119, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@509e4d53)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=10, nombre=Odontologo, apellido=de Prueba, matricula=9279)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@c1d9c40
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@c1d9c40
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@499f9003
+[2022-07-11 15:19:14] [INFO] [OdontologoService:133] Se  eliminó el turno: ar.com.dami.odontologica.dto.TurnoDTO@6d92bfaf
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=10, apellido=de Prueba, nombre=Paciente, dni=3618120, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@32be672d)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=11, nombre=Odontologo, apellido=de Prueba, matricula=6162)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=10, apellido=de Prueba, nombre=Paciente, dni=3618120, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@680408ac)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=11, nombre=Odontologo, apellido=de Prueba, matricula=6162)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@320ca97c
+[2022-07-11 15:19:14] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@320ca97c
+[2022-07-11 15:19:14] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@5581e273
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=11, apellido=de Prueba, nombre=Paciente, dni=8059838, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@3e60be48)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=11, apellido=de Prueba, nombre=Paciente, dni=8059838, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@5c6ee543)
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=12, apellido=de Prueba, nombre=Paciente, dni=4897644, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@2ab87cb8)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=12, apellido=de Prueba, nombre=Paciente, dni=4897644, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@18372705)
+[2022-07-11 15:19:14] [INFO] [PacienteService:110] Se eliminó el paciente: PacienteDTO(id=12, apellido=de Prueba, nombre=Paciente, dni=4897644, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@308498a8)
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=13, apellido=de Prueba, nombre=Paciente, dni=29726558, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@35e0d91e)
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=14, apellido=de Prueba, nombre=Paciente, dni=28708830, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@11548363)
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=15, apellido=de Prueba, nombre=Paciente, dni=27548666, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@6179af64)
+[2022-07-11 15:19:14] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=16, apellido=de Prueba, nombre=Paciente, dni=15507386, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@4d2bcca8)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=16, apellido=de Prueba, nombre=Paciente, dni=15507386, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@88fe9a8)
+[2022-07-11 15:19:14] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=17, apellido=de Prueba, nombre=Paciente, dni=10807428, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@7a14d8a4)
+[2022-07-11 15:19:14] [INFO] [PacienteService:135] Se actualizará un paciente. Datos originales: PacienteDTO(id=17, apellido=de Prueba, nombre=Paciente, dni=10807428, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@6bf27411)
+[2022-07-11 15:19:14] [INFO] [PacienteService:143] Datos actuales: PacienteDTO(id=17, apellido=McFly, nombre=Marty, dni=10807428, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@7f680a9a)
+[2022-07-11 15:19:14] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=17, apellido=McFly, nombre=Marty, dni=10807428, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@303a484e)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=12, nombre=Odontologo, apellido=de Prueba, matricula=4012)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=12, nombre=Odontologo, apellido=de Prueba, matricula=4012)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=13, nombre=Odontologo, apellido=de Prueba, matricula=3301)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=13, nombre=Odontologo, apellido=de Prueba, matricula=3301)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:107] Se eliminó el odontólogo: OdontologoDTO(id=13, nombre=Odontologo, apellido=de Prueba, matricula=3301)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=14, nombre=Odontologo, apellido=de Prueba, matricula=5344)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=14, nombre=Odontologo, apellido=de Prueba, matricula=5344)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=15, nombre=Odontologo, apellido=de Prueba, matricula=6870)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=16, nombre=Odontologo, apellido=de Prueba, matricula=1882)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=17, nombre=Odontologo, apellido=de Prueba, matricula=1552)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 15:19:14] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=18, nombre=Odontologo, apellido=de Prueba, matricula=8562)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:131] Se actualizará un odontólogo. Datos originales: OdontologoDTO(id=18, nombre=Odontologo, apellido=de Prueba, matricula=8562)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:139] Datos actuales: OdontologoDTO(id=18, nombre=Doc. Emmet, apellido=Brown, matricula=4116)
+[2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=18, nombre=Doc. Emmet, apellido=Brown, matricula=4116)
