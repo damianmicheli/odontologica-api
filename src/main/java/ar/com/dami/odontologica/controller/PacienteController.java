@@ -47,7 +47,7 @@ public class PacienteController {
         pacienteService.eliminar(id);
         String mensaje = "El paciente con ID " + id + " se eliminó correctamente.";
         String mensajeJSON = Jsons.asJsonString(mensaje);
-        return new ResponseEntity<>(mensaje, HttpStatus.OK);
+        return new ResponseEntity<>(mensajeJSON, HttpStatus.OK);
 
     }
 
