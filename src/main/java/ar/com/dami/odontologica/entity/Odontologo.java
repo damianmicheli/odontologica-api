@@ -24,4 +24,12 @@ public class Odontologo {
     @JsonIgnore
     private List<Turno> turnos;
 
+    public Odontologo() {
+    }
+
+    public Odontologo(String nombre, String apellido, String matricula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+    }
 }

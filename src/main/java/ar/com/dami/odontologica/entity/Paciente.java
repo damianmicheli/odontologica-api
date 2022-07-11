@@ -31,4 +31,15 @@ public class Paciente {
     @JsonIgnore
     private List<Turno> turnos;
 
+
+    public Paciente() {
+    }
+
+    public Paciente(String apellido, String nombre, String dni, LocalDate fechaIngreso, Domicilio domicilio) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.dni = dni;
+        this.fechaIngreso = fechaIngreso;
+        this.domicilio = domicilio;
+    }
 }

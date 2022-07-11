@@ -2379,3 +2379,18 @@ update odontologo set apellido=?, matricula=?, nombre=? where id=? [23505-214]];
 [2022-07-11 10:27:11] [INFO] [OdontologoService:107] Se eliminó el odontólogo: OdontologoDTO(id=29, nombre=Odontologo, apellido=de Prueba, matricula=8360)
 [2022-07-11 10:27:29] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
 [2022-07-11 10:27:29] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 11:29:43] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 11:29:58] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 11:36:29] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 11:36:43] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=26, nombre=Odontologo, apellido=dfg, matricula=5742)
+[2022-07-11 11:36:48] [INFO] [OdontologoService:131] Se actualizará un odontólogo. Datos originales: OdontologoDTO(id=26, nombre=Odontologo, apellido=dfg, matricula=5742)
+[2022-07-11 11:36:48] [INFO] [OdontologoService:139] Datos actuales: OdontologoDTO(id=26, nombre=Odontologo, apellido=dfg, matricula=57426)
+[2022-07-11 11:36:50] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 11:37:13] [INFO] [OdontologoService:107] Se eliminó el odontólogo: OdontologoDTO(id=87, nombre=Odontologo, apellido=de Prueba, matricula=7548)
+[2022-07-11 11:37:22] [INFO] [OdontologoService:107] Se eliminó el odontólogo: OdontologoDTO(id=144, nombre=Juan, apellido=Perez, matricula=8549)
+[2022-07-11 11:37:38] [INFO] [OdontologoService:107] Se eliminó el odontólogo: OdontologoDTO(id=178, nombre=Odontologo, apellido=de Prueba, matricula=6721)
+[2022-07-11 11:38:01] [INFO] [OdontologoService:107] Se eliminó el odontólogo: OdontologoDTO(id=36, nombre=Juanxcvxcv, apellido=Perezxcvxcv, matricula=8920xcvxcv)
+[2022-07-11 11:38:18] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 11:38:28] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=12, apellido=de Prueba, nombre=Paciente, dni=30606644, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@27807587)
+[2022-07-11 11:38:37] [INFO] [PacienteService:110] Se eliminó el paciente: PacienteDTO(id=12, apellido=de Prueba, nombre=Paciente, dni=30606644, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@6af14a3f)
+[2022-07-11 11:38:40] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=18, apellido=de Prueba, nombre=Paciente, dni=32495493, fechaIngreso=2002-05-05, domicilio=ar.com.dami.odontologica.entity.Domicilio@5494f402)

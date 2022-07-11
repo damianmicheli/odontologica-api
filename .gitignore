@@ -5,9 +5,9 @@ target/
 !**/src/test/**/target/
 
 ### Configuraciones del proyecto ###
-#/src/main/resources/application.properties
-#/src/main/resources/log4j.properties
-#/src/main/resources/static/js/data.js ## --> cambiar en /src/main/resources/static/.gitignore
+/src/main/resources/application.properties
+/src/main/resources/log4j.properties
+/src/main/resources/static/js/data.js ## --> cambiar en /src/main/resources/static/.gitignore
 
 ### STS ###
 .apt_generated
