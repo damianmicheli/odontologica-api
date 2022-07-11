@@ -109,7 +109,7 @@ public class OdontologoService implements IOdontologoService{
     }
 
     @Override
-    public OdontologoDTO actualizar(OdontologoDTO odontologoDTO) throws NoEncontradoException {
+    public OdontologoDTO actualizar(OdontologoDTO odontologoDTO) throws NoEncontradoException, ConflictoException {
 
         Long id = odontologoDTO.getId();
 
@@ -119,9 +119,16 @@ public class OdontologoService implements IOdontologoService{
             throw new NoEncontradoException("No se puede actualizar porque no existe un odontólogo con Id: " + id + ".");
         }
 
+        String matricula = odontologoDTO.getMatricula();
+        Optional<Odontologo> encontradoMat = odontologoRepository.findByMatricula(matricula);
+
+        if (encontradoMat.isPresent() && !encontradoMat.get().getId().equals(id) ){
+            throw new ConflictoException("Ya existe otro odontólogo con la matrícula " + matricula + ".");
+        }
+
         OdontologoDTO odontologoDTOParaActualizar = mapper.convertValue(encontrado, OdontologoDTO.class);
 
-        logger.info("Se actualizará un odontólogo. Datos actuales: " + odontologoDTOParaActualizar);
+        logger.info("Se actualizará un odontólogo. Datos originales: " + odontologoDTOParaActualizar);
 
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
 

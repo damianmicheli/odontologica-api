@@ -21,7 +21,9 @@ public class OdontologicaApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("https://odontologica.dami.com.ar");
+				registry.addMapping("/**")
+						.allowedOrigins("https://odontologica.dami.com.ar","http://127.0.0.1:5500")
+						.allowedMethods("PUT", "DELETE", "GET", "POST");
 			}
 		};
 	}

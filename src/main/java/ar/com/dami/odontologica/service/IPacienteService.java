@@ -12,6 +12,6 @@ public interface IPacienteService {
     PacienteDTO buscarPorDni(String dni) throws NoEncontradoException;
     List<PacienteDTO> listarTodos();
     void eliminar(Long id) throws NoEncontradoException;
-    PacienteDTO actualizar (PacienteDTO pacienteDTO) throws NoEncontradoException;
+    PacienteDTO actualizar (PacienteDTO pacienteDTO) throws NoEncontradoException, ConflictoException;
 
 }

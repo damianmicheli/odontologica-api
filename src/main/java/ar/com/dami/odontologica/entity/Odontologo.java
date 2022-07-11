@@ -20,7 +20,7 @@ public class Odontologo {
     @Column(unique = true)
     private String matricula;
 
-    @OneToMany(mappedBy = "odontologo")
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Turno> turnos;
 

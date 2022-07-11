@@ -1,6 +1,7 @@
 package ar.com.dami.odontologica.service;
 
 import ar.com.dami.odontologica.dto.PacienteDTO;
+import ar.com.dami.odontologica.entity.Odontologo;
 import ar.com.dami.odontologica.entity.Paciente;
 import ar.com.dami.odontologica.repository.IPacienteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -111,7 +112,7 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDTO actualizar(PacienteDTO pacienteDTO) throws NoEncontradoException {
+    public PacienteDTO actualizar(PacienteDTO pacienteDTO) throws NoEncontradoException, ConflictoException {
 
         Long id = pacienteDTO.getId();
 
@@ -121,9 +122,17 @@ public class PacienteService implements IPacienteService{
             throw new NoEncontradoException("No se puede actualizar porque no existe un paciente con Id: " + id + ".");
         }
 
+        String dni = pacienteDTO.getDni();
+        Optional<Paciente> encontradoDni = pacienteRepository.findByDni(dni);
+
+        if (encontradoDni.isPresent() && !encontradoDni.get().getId().equals(id) ){
+            throw new ConflictoException("Ya existe otro paciente con el DNI " + dni + ".");
+        }
+
+
         PacienteDTO pacienteDTOParaActualizar = mapper.convertValue(encontrado,PacienteDTO.class);
 
-        logger.info("Se actualizará un paciente. Datos actuales: " + pacienteDTOParaActualizar);
+        logger.info("Se actualizará un paciente. Datos originales: " + pacienteDTOParaActualizar);
 
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
 

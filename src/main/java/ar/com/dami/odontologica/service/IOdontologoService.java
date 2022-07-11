@@ -11,6 +11,6 @@ public interface IOdontologoService {
     OdontologoDTO buscarPorMatricula(String matricula) throws NoEncontradoException;
     List<OdontologoDTO> listarTodos();
     void eliminar(Long id) throws NoEncontradoException;
-    OdontologoDTO actualizar (OdontologoDTO odontologoDTO) throws NoEncontradoException;
+    OdontologoDTO actualizar (OdontologoDTO odontologoDTO) throws NoEncontradoException, ConflictoException;
 
 }

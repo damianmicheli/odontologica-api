@@ -5,6 +5,7 @@ import ar.com.dami.odontologica.service.ConflictoException;
 import ar.com.dami.odontologica.service.DatosIncorrectosException;
 import ar.com.dami.odontologica.service.IPacienteService;
 import ar.com.dami.odontologica.service.NoEncontradoException;
+import ar.com.dami.odontologica.util.Jsons;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,13 +45,14 @@ public class PacienteController {
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
         pacienteService.eliminar(id);
-
-        return new ResponseEntity<>("El paciente con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
+        String mensaje = "El paciente con ID " + id + " se eliminó correctamente.";
+        String mensajeJSON = Jsons.asJsonString(mensaje);
+        return new ResponseEntity<>(mensaje, HttpStatus.OK);
 
     }
 
     @PutMapping
-    public ResponseEntity<PacienteDTO> actualizar(@RequestBody PacienteDTO pacienteDTO) throws NoEncontradoException {
+    public ResponseEntity<PacienteDTO> actualizar(@RequestBody PacienteDTO pacienteDTO) throws NoEncontradoException, ConflictoException {
 
         return new ResponseEntity<>(pacienteService.actualizar(pacienteDTO), HttpStatus.OK);
 

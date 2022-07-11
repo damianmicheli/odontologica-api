@@ -27,7 +27,7 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
-    @OneToMany(mappedBy = "paciente")
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Turno> turnos;
 

@@ -3,6 +3,7 @@ package ar.com.dami.odontologica.controller;
 import ar.com.dami.odontologica.service.ConflictoException;
 import ar.com.dami.odontologica.service.DatosIncorrectosException;
 import ar.com.dami.odontologica.service.NoEncontradoException;
+import ar.com.dami.odontologica.util.Jsons;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class GlobalExceptionHandler {
 
         logger.error(mensajeError);
 
-        return new ResponseEntity<>(mensajeError, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(ConflictoException.class)
@@ -32,7 +33,7 @@ public class GlobalExceptionHandler {
 
         logger.error(mensajeError);
 
-        return new ResponseEntity<>(mensajeError, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(DatosIncorrectosException.class)
@@ -42,7 +43,7 @@ public class GlobalExceptionHandler {
 
         logger.error(mensajeError);
 
-        return new ResponseEntity<>(mensajeError, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(java.time.format.DateTimeParseException.class)
@@ -52,7 +53,7 @@ public class GlobalExceptionHandler {
 
         logger.error(mensajeError);
 
-        return new ResponseEntity<>(mensajeError, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
@@ -64,7 +65,7 @@ public class GlobalExceptionHandler {
 
         logger.error(mensajeErrorCorrecto);
 
-        return new ResponseEntity<>(mensajeError, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

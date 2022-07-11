@@ -183,7 +183,7 @@ public class TurnoService implements ITurnoService{
 
         TurnoDTO turnoDTOParaActualizar = mapper.convertValue(encontrado, TurnoDTO.class);
 
-        logger.info("Se actualizará un turno. Datos actuales: " + turnoDTOParaActualizar);
+        logger.info("Se actualizará un turno. Datos originales: " + turnoDTOParaActualizar);
 
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
 

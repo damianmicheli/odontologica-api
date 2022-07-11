@@ -2,6 +2,7 @@ package ar.com.dami.odontologica.controller;
 
 import ar.com.dami.odontologica.dto.TurnoDTO;
 import ar.com.dami.odontologica.service.*;
+import ar.com.dami.odontologica.util.Jsons;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,9 @@ public class TurnoController {
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
         turnoService.eliminar(id);
-        return new ResponseEntity<>("El turno con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
+        String mensaje = "El turno con ID " + id + " se eliminó correctamente.";
+        String mensajeJSON = Jsons.asJsonString(mensaje);
+        return new ResponseEntity<>(mensajeJSON, HttpStatus.OK);
 
     }
 

@@ -24,8 +24,6 @@ public class IntegracionTurnoTest {
     @Autowired
     private MockMvc mockMvc;
 
-
-
     @Test
     public void registrarTurno() throws Exception {
 
@@ -33,7 +31,7 @@ public class IntegracionTurnoTest {
         int hora = rand.nextInt(10, 23);
         int minuto = rand.nextInt(10, 59);
 
-        String json = "{\"paciente\": {\"id\": 11},\"odontologo\": {\"id\": 13},\"fechaHora\": \"2022-08-12T" + hora + ":" + minuto + ":00\"}";
+        String json = "{\"paciente\": {\"id\": 15},\"odontologo\": {\"id\": 26},\"fechaHora\": \"2022-08-12T" + hora + ":" + minuto + ":00\"}";
 
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/turnos")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -51,7 +49,9 @@ public class IntegracionTurnoTest {
         int hora = rand.nextInt(10, 23);
         int minuto = rand.nextInt(10,59);
 
-        String json = "{\"paciente\": {\"id\": 11},\"odontologo\": {\"id\": 13},\"fechaHora\": \"2022-08-12T" + hora + ":" + minuto + ":00\"}";
+
+
+        String json = "{\"paciente\": {\"id\": 15},\"odontologo\": {\"id\": 26},\"fechaHora\": \"2022-08-12T" + hora + ":" + minuto + ":00\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/turnos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
@@ -64,7 +64,7 @@ public class IntegracionTurnoTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is(409)).andReturn();
 
-        Assert.assertEquals("El odontólogo con Id 13 ya tiene un turno asignado en ese horario.", response.getResponse().getContentAsString());
+        Assert.assertEquals("\"El odontólogo con Id 26 ya tiene un turno asignado en ese horario.\"", response.getResponse().getContentAsString());
     }
 
     @Test
