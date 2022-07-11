@@ -19,7 +19,7 @@ import java.util.Optional;
 @Service
 public class TurnoService implements ITurnoService{
 
-    private final Logger logger = Logger.getLogger(OdontologoService.class);
+    private final Logger logger = Logger.getLogger(TurnoService.class);
     private final ITurnoRepository turnoRepository;
     private final PacienteService pacienteService;
     private final OdontologoService odontologoService;

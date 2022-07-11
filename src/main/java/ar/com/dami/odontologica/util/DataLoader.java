@@ -8,7 +8,6 @@ import ar.com.dami.odontologica.entity.Turno;
 import ar.com.dami.odontologica.repository.IOdontologoRepository;
 import ar.com.dami.odontologica.repository.IPacienteRepository;
 import ar.com.dami.odontologica.repository.ITurnoRepository;
-import ar.com.dami.odontologica.service.OdontologoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -20,7 +19,7 @@ import java.time.LocalDateTime;
 @Component
 public class DataLoader implements ApplicationRunner {
 
-    private final Logger logger = Logger.getLogger(OdontologoService.class);
+    private final Logger logger = Logger.getLogger(DataLoader.class);
 
     private final IOdontologoRepository odontologoRepository;
     private final IPacienteRepository pacienteRepository;
