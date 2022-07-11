@@ -3108,3 +3108,16 @@ update odontologo set apellido=?, matricula=?, nombre=? where id=? [23505-214]];
 [2022-07-11 15:19:14] [INFO] [OdontologoService:131] Se actualizará un odontólogo. Datos originales: OdontologoDTO(id=18, nombre=Odontologo, apellido=de Prueba, matricula=8562)
 [2022-07-11 15:19:14] [INFO] [OdontologoService:139] Datos actuales: OdontologoDTO(id=18, nombre=Doc. Emmet, apellido=Brown, matricula=4116)
 [2022-07-11 15:19:14] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=18, nombre=Doc. Emmet, apellido=Brown, matricula=4116)
+[2022-07-11 15:35:56] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:36:00] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 15:36:02] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 15:36:05] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 15:36:09] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:36:18] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 15:36:20] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 15:36:22] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:36:39] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 15:36:40] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 15:36:51] [INFO] [OdontologoService:131] Se actualizará un odontólogo. Datos originales: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 15:36:51] [INFO] [OdontologoService:139] Datos actuales: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444665)
+[2022-07-11 15:36:53] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
