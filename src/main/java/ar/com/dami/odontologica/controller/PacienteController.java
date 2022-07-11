@@ -2,6 +2,7 @@ package ar.com.dami.odontologica.controller;
 
 import ar.com.dami.odontologica.dto.PacienteDTO;
 import ar.com.dami.odontologica.service.ConflictoException;
+import ar.com.dami.odontologica.service.DatosIncorrectosException;
 import ar.com.dami.odontologica.service.IPacienteService;
 import ar.com.dami.odontologica.service.NoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +29,12 @@ public class PacienteController {
     @GetMapping
     public ResponseEntity<List<PacienteDTO>> listarTodos(){
 
-        ResponseEntity<List<PacienteDTO>> response;
+        return new ResponseEntity<>(pacienteService.listarTodos(), HttpStatus.OK);
 
-        List<PacienteDTO> pacientes = pacienteService.listarTodos();
-
-        response = new ResponseEntity<>(pacientes, HttpStatus.OK);
-
-        return response;
     }
 
     @PostMapping
-    public ResponseEntity<PacienteDTO> guardar(@RequestBody PacienteDTO pacienteDTO) throws ConflictoException {
+    public ResponseEntity<PacienteDTO> guardar(@RequestBody PacienteDTO pacienteDTO) throws ConflictoException, DatosIncorrectosException {
 
         return new ResponseEntity<>(pacienteService.guardar(pacienteDTO), HttpStatus.OK);
 
@@ -47,32 +43,17 @@ public class PacienteController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
-        ResponseEntity<String> response;
+        pacienteService.eliminar(id);
 
-        if (pacienteService.buscar(id) == null){
-            response = new ResponseEntity<>("Paciente no encontrado.", HttpStatus.NOT_FOUND);
-        } else {
-            pacienteService.eliminar(id);
-            response = new ResponseEntity<>("El paciente con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
+        return new ResponseEntity<>("El paciente con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
 
-        }
-
-        return response;
     }
 
     @PutMapping
     public ResponseEntity<PacienteDTO> actualizar(@RequestBody PacienteDTO pacienteDTO) throws NoEncontradoException {
 
-        ResponseEntity<PacienteDTO> response;
-        Long id = pacienteDTO.getId();
+        return new ResponseEntity<>(pacienteService.actualizar(pacienteDTO), HttpStatus.OK);
 
-        if (pacienteService.buscar(id) == null){
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            response = new ResponseEntity<>(pacienteService.actualizar(pacienteDTO), HttpStatus.OK);
-        }
-
-        return response;
     }
 
 }

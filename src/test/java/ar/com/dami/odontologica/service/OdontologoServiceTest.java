@@ -17,12 +17,13 @@ class OdontologoServiceTest {
     @Autowired
     IOdontologoService odontologoService;
 
+    private final Random rand = new Random();
+
     public OdontologoDTO crearNuevoOdontologo(){
-        Random rand = new Random();
         OdontologoDTO odontologo = new OdontologoDTO();
         odontologo.setNombre("Odontologo");
         odontologo.setApellido("de Prueba");
-        odontologo.setMatricula(String.valueOf(rand.nextInt(10000)));
+        odontologo.setMatricula(String.valueOf(rand.nextInt(9000)+1000));
 
         return odontologo;
     }
@@ -104,7 +105,7 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoActualizar = odontologoGuardado;
         odontologoActualizar.setNombre("Doc. Emmet");
         odontologoActualizar.setApellido("Brown");
-        odontologoActualizar.setMatricula("808080");
+        odontologoActualizar.setMatricula(String.valueOf(rand.nextInt(9000)+1000));
 
         odontologoService.actualizar(odontologoActualizar);
 

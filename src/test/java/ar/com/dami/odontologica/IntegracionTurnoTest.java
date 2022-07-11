@@ -19,19 +19,23 @@ import java.util.Random;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
-public class IntegracionOdontologoTest {
+public class IntegracionTurnoTest {
 
     @Autowired
     private MockMvc mockMvc;
-    private Random rand = new Random();
-    String matriculaRandom = String.valueOf(rand.nextInt(9000)+1000);
+
+
 
     @Test
-    public void registrarOdontologo() throws Exception {
+    public void registrarTurno() throws Exception {
 
-        String json = "{\"nombre\":\"Juan\",\"apellido\": \"Perez\",\"matricula\": " + matriculaRandom + "}";
+        Random rand = new Random();
+        int hora = rand.nextInt(10, 23);
+        int minuto = rand.nextInt(10, 59);
 
-        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/odontologos")
+        String json = "{\"paciente\": {\"id\": 11},\"odontologo\": {\"id\": 13},\"fechaHora\": \"2022-08-12T" + hora + ":" + minuto + ":00\"}";
+
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/turnos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andDo(MockMvcResultHandlers.print())
@@ -41,28 +45,31 @@ public class IntegracionOdontologoTest {
     }
 
     @Test
-    public void registrarOdontologoRepetido() throws Exception {
+    public void registrarTurnoRepetido() throws Exception {
 
-        String json = "{\"nombre\":\"Juan\",\"apellido\": \"Perez\",\"matricula\": " + matriculaRandom + "}";
+        Random rand = new Random();
+        int hora = rand.nextInt(10, 23);
+        int minuto = rand.nextInt(10,59);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/odontologos")
+        String json = "{\"paciente\": {\"id\": 11},\"odontologo\": {\"id\": 13},\"fechaHora\": \"2022-08-12T" + hora + ":" + minuto + ":00\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/turnos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
-        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/odontologos")
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/turnos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is(409)).andReturn();
 
-        Assert.assertFalse(response.getResponse().getContentAsString().isEmpty());
+        Assert.assertEquals("El odontólogo con Id 13 ya tiene un turno asignado en ese horario.", response.getResponse().getContentAsString());
     }
 
     @Test
     public void listarOdontologo() throws Exception {
-        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/odontologos")
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/turnos")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();

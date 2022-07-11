@@ -52,7 +52,11 @@ public class OdontologoService implements IOdontologoService{
             throw new NoEncontradoException("Odontólogo con Id " + id + " no encontrado.");
         }
 
-        return mapper.convertValue(odontologo, OdontologoDTO.class);
+        OdontologoDTO odontologoDTOBuscado = mapper.convertValue(odontologo,OdontologoDTO.class);
+
+        logger.info("Se buscó por Id el odontólogo: " + odontologoDTOBuscado);
+
+        return odontologoDTOBuscado;
     }
 
     @Override
@@ -64,7 +68,11 @@ public class OdontologoService implements IOdontologoService{
             throw new NoEncontradoException("Odontólogo con Matricula " + matricula + " no encontrado.");
         }
 
-        return mapper.convertValue(odontologo, OdontologoDTO.class);
+        OdontologoDTO odontologoDTOBuscado = mapper.convertValue(odontologo,OdontologoDTO.class);
+
+        logger.info("Se buscó por Matrícula el odontólogo: " + odontologoDTOBuscado);
+
+        return odontologoDTOBuscado;
     }
 
 
@@ -78,12 +86,26 @@ public class OdontologoService implements IOdontologoService{
             odontologosDTO.add(mapper.convertValue(odontologo, OdontologoDTO.class));
         }
 
+        logger.info("Se listaron todos los odontólogos.");
+
         return odontologosDTO;
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(Long id) throws NoEncontradoException {
+
+        Optional<Odontologo> odontologo = odontologoRepository.findById(id);
+
+        if (odontologo.isEmpty()){
+            throw new NoEncontradoException("No se puede eliminar porque no existe el Odontólogo con Id " + id + ",");
+        }
+
+        OdontologoDTO odontologoDTOAEliminar = mapper.convertValue(odontologo,OdontologoDTO.class);
+
         odontologoRepository.deleteById(id);
+
+        logger.info("Se eliminó el odontólogo: " + odontologoDTOAEliminar);
+
     }
 
     @Override
@@ -97,10 +119,18 @@ public class OdontologoService implements IOdontologoService{
             throw new NoEncontradoException("No se puede actualizar porque no existe un odontólogo con Id: " + id + ".");
         }
 
+        OdontologoDTO odontologoDTOParaActualizar = mapper.convertValue(encontrado, OdontologoDTO.class);
+
+        logger.info("Se actualizará un odontólogo. Datos actuales: " + odontologoDTOParaActualizar);
+
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
 
         Odontologo odontologoRes = odontologoRepository.save(odontologo);
 
-        return mapper.convertValue(odontologoRes,OdontologoDTO.class);
+        OdontologoDTO odontologoDTOActualizado = mapper.convertValue(odontologoRes,OdontologoDTO.class);
+
+        logger.info("Datos actuales: " + odontologoDTOActualizado);
+
+        return odontologoDTOActualizado;
     }
 }

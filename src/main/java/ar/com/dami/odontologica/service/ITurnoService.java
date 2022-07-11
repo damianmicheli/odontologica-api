@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface ITurnoService {
 
-    TurnoDTO guardar (TurnoDTO turnoDTO);
-    TurnoDTO buscar(Long id);
+    TurnoDTO guardar (TurnoDTO turnoDTO) throws ConflictoException, DatosIncorrectosException, NoEncontradoException;
+    TurnoDTO buscar(Long id) throws NoEncontradoException;
     List<TurnoDTO> listarTodos();
-    void eliminar(Long id);
-    TurnoDTO actualizar (TurnoDTO turnoDTO);
+    void eliminar(Long id) throws NoEncontradoException;
+    TurnoDTO actualizar (TurnoDTO turnoDTO) throws NoEncontradoException, DatosIncorrectosException, ConflictoException;
 
 }

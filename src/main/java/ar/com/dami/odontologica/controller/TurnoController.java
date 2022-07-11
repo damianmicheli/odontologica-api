@@ -1,10 +1,7 @@
 package ar.com.dami.odontologica.controller;
 
 import ar.com.dami.odontologica.dto.TurnoDTO;
-import ar.com.dami.odontologica.service.IOdontologoService;
-import ar.com.dami.odontologica.service.IPacienteService;
-import ar.com.dami.odontologica.service.ITurnoService;
-import ar.com.dami.odontologica.service.NoEncontradoException;
+import ar.com.dami.odontologica.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,99 +14,45 @@ import java.util.List;
 @RequestMapping("turnos")
 public class TurnoController {
 
-    private final ITurnoService turnoService;
-    private final IOdontologoService odontologoService;
-    private final IPacienteService pacienteService;
-
     @Autowired
-    public TurnoController(ITurnoService turnoService, IOdontologoService odontologoService, IPacienteService pacienteService) {
-        this.turnoService = turnoService;
-        this.odontologoService = odontologoService;
-        this.pacienteService = pacienteService;
-    }
+    private ITurnoService turnoService;
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<TurnoDTO> buscar(@PathVariable Long id){
+    public ResponseEntity<TurnoDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
 
-        ResponseEntity<TurnoDTO> response;
+        return new ResponseEntity<>(turnoService.buscar(id), HttpStatus.OK);
 
-        TurnoDTO encontrado = turnoService.buscar(id);
-
-        if (encontrado == null) {
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        else {
-            response = new ResponseEntity<>(encontrado, HttpStatus.OK);
-        }
-
-        return response;
     }
 
     @GetMapping
     public ResponseEntity<List<TurnoDTO>> listarTodos(){
 
-        ResponseEntity<List<TurnoDTO>> response;
+        return new ResponseEntity<>(turnoService.listarTodos(), HttpStatus.OK);
 
-        List<TurnoDTO> turnos = turnoService.listarTodos();
-
-        response = new ResponseEntity<>(turnos, HttpStatus.OK);
-
-        return response;
     }
 
 
     @PostMapping
-    public ResponseEntity<TurnoDTO> guardar(@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException {
+    public ResponseEntity<TurnoDTO> guardar(@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException, DatosIncorrectosException, ConflictoException {
 
-        ResponseEntity<TurnoDTO> response;
-        Long odontologoId = turnoDTO.getOdontologo().getId();
-        Long pacienteId = turnoDTO.getPaciente().getId();
-
-        if (odontologoService.buscar(odontologoId) == null
-                || pacienteService.buscar(pacienteId) == null
-                || turnoDTO.getFechaHora() == null){
-            response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        } else {
-            response = new ResponseEntity<>(turnoService.guardar(turnoDTO), HttpStatus.OK);
-        }
-
-        return response;
+        return new ResponseEntity<>(turnoService.guardar(turnoDTO), HttpStatus.OK);
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Long id){
-        ResponseEntity<String> response;
+    public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
-        if (turnoService.buscar(id) == null){
-            response = new ResponseEntity<>("Turno no encontrado.", HttpStatus.NOT_FOUND);
-        } else {
-            turnoService.eliminar(id);
-            response = new ResponseEntity<>("El turno con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
+        turnoService.eliminar(id);
+        return new ResponseEntity<>("El turno con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
 
-        }
-        return response;
     }
 
     @PutMapping
-    public ResponseEntity<TurnoDTO> actualizar (@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException {
+    public ResponseEntity<TurnoDTO> actualizar (@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException, DatosIncorrectosException, ConflictoException {
 
-        ResponseEntity<TurnoDTO> response;
-        Long odontologoId = turnoDTO.getOdontologo().getId();
-        Long pacienteId = turnoDTO.getPaciente().getId();
+        return new ResponseEntity<>(turnoService.actualizar(turnoDTO),HttpStatus.OK);
 
-        if (turnoService.buscar(turnoDTO.getId()) == null){
-            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else if (odontologoService.buscar(odontologoId) == null
-                || pacienteService.buscar(pacienteId) == null
-                || turnoDTO.getFechaHora() == null){
-            response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        } else {
-            response = new ResponseEntity<>(turnoService.actualizar(turnoDTO),HttpStatus.OK);
-        }
-
-        return response;
     }
 
 }

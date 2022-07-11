@@ -10,7 +10,7 @@ public interface IOdontologoService {
     OdontologoDTO buscar(Long id) throws NoEncontradoException;
     OdontologoDTO buscarPorMatricula(String matricula) throws NoEncontradoException;
     List<OdontologoDTO> listarTodos();
-    void eliminar(Long id);
+    void eliminar(Long id) throws NoEncontradoException;
     OdontologoDTO actualizar (OdontologoDTO odontologoDTO) throws NoEncontradoException;
 
 }

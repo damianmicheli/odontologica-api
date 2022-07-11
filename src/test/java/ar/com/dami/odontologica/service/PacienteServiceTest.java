@@ -38,7 +38,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteGuardarTest() throws ConflictoException, NoEncontradoException {
+    void pacienteGuardarTest() throws ConflictoException, NoEncontradoException, DatosIncorrectosException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -51,7 +51,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteBuscarTest() throws ConflictoException, NoEncontradoException {
+    void pacienteBuscarTest() throws ConflictoException, NoEncontradoException, DatosIncorrectosException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -63,7 +63,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteListarTodosTest() throws ConflictoException {
+    void pacienteListarTodosTest() throws ConflictoException, DatosIncorrectosException {
 
 
         pacienteService.guardar(crearPacienteNuevo());
@@ -77,7 +77,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteEliminarTest() throws ConflictoException, NoEncontradoException {
+    void pacienteEliminarTest() throws ConflictoException, NoEncontradoException, DatosIncorrectosException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 
@@ -102,7 +102,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void pacienteActualizarTest() throws NoEncontradoException, ConflictoException {
+    void pacienteActualizarTest() throws NoEncontradoException, ConflictoException, DatosIncorrectosException {
 
         PacienteDTO paciente = crearPacienteNuevo();
 

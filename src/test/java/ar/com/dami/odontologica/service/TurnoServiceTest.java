@@ -45,7 +45,7 @@ class TurnoServiceTest {
         OdontologoDTO odontologo = new OdontologoDTO();
         odontologo.setNombre("Odontologo");
         odontologo.setApellido("de Prueba");
-        odontologo.setMatricula(String.valueOf(rand.nextInt(10000)));
+        odontologo.setMatricula(String.valueOf(rand.nextInt(9000)+1000));
 
         return odontologo;
     }
@@ -69,7 +69,7 @@ class TurnoServiceTest {
         return paciente;
     }
 
-    public TurnoDTO crearNuevoTurno() throws ConflictoException {
+    public TurnoDTO crearNuevoTurno() throws ConflictoException, DatosIncorrectosException {
 
         TurnoDTO turno = new TurnoDTO();
 
@@ -90,7 +90,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoGuardarTest() throws ConflictoException {
+    void turnoGuardarTest() throws ConflictoException, DatosIncorrectosException, NoEncontradoException {
 
         TurnoDTO turno = crearNuevoTurno();
         turno.setFechaHora(fechaTurno.plusDays(5L));
@@ -105,7 +105,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoBuscarTest() throws ConflictoException {
+    void turnoBuscarTest() throws ConflictoException, DatosIncorrectosException, NoEncontradoException {
 
         TurnoDTO turno = crearNuevoTurno();
         turno.setFechaHora(fechaTurno.plusDays(10L));
@@ -118,7 +118,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoListarTodosTest() throws ConflictoException {
+    void turnoListarTodosTest() throws ConflictoException, DatosIncorrectosException, NoEncontradoException {
         TurnoDTO turno = crearNuevoTurno();
         turno.setFechaHora(fechaTurno.plusDays(15L));
         turnoService.guardar(turno);
@@ -139,7 +139,7 @@ class TurnoServiceTest {
     }
 
     @Test
-    void turnoEliminarTest() throws ConflictoException {
+    void turnoEliminarTest() throws ConflictoException, DatosIncorrectosException, NoEncontradoException {
         TurnoDTO turno = crearNuevoTurno();
         turno.setFechaHora(fechaTurno.plusDays(30L));
 
@@ -153,14 +153,17 @@ class TurnoServiceTest {
 
         turnoService.eliminar(id);
 
-        TurnoDTO turnoNoEncontrado = turnoService.buscar(id);
 
-        assertNull(turnoNoEncontrado);
+        NoEncontradoException thrown = assertThrows(NoEncontradoException.class, () -> {
+            turnoService.buscar(id);
+        });
+
+        assertEquals("Turno con Id " + id + " no encontrado.", thrown.getMessage());
 
     }
 
     @Test
-    void turnoActualizarTest() throws ConflictoException {
+    void turnoActualizarTest() throws ConflictoException, DatosIncorrectosException, NoEncontradoException {
 
         TurnoDTO turno = crearNuevoTurno();
         turno.setFechaHora(fechaTurno.plusDays(35L));

@@ -29,13 +29,8 @@ public class OdontologoController {
     @GetMapping
     public ResponseEntity<List<OdontologoDTO>> listarTodos(){
 
-        ResponseEntity<List<OdontologoDTO>> response;
+        return new ResponseEntity<>(odontologoService.listarTodos(), HttpStatus.OK);
 
-        List<OdontologoDTO> odontologos = odontologoService.listarTodos();
-
-        response = new ResponseEntity<>(odontologos, HttpStatus.OK);
-
-        return response;
     }
 
     @PostMapping
@@ -48,23 +43,17 @@ public class OdontologoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
-        ResponseEntity<String> response;
+        odontologoService.eliminar(id);
 
-        if (odontologoService.buscar(id) == null){
-            response = new ResponseEntity<>("Odontólogo no encontrado.", HttpStatus.NOT_FOUND);
-        } else {
-            odontologoService.eliminar(id);
-            response = new ResponseEntity<>("El odontólogo con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
+        return new ResponseEntity<>("El odontólogo con ID " + id + " se eliminó correctamente.", HttpStatus.OK);
 
-        }
-
-        return response;
     }
 
     @PutMapping
     public ResponseEntity<OdontologoDTO> actualizar(@RequestBody OdontologoDTO odontologoDTO) throws NoEncontradoException {
 
         return new ResponseEntity<>(odontologoService.actualizar(odontologoDTO), HttpStatus.OK);
+
     }
 
 }
