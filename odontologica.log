@@ -2977,3 +2977,35 @@ update odontologo set apellido=?, matricula=?, nombre=? where id=? [23505-214]];
 [2022-07-11 14:47:25] [INFO] [OdontologoService:186] Se actualizará un turno. Datos originales: ar.com.dami.odontologica.dto.TurnoDTO@2ccb7927
 [2022-07-11 14:47:25] [INFO] [OdontologoService:194] Datos actuales: ar.com.dami.odontologica.dto.TurnoDTO@75104670
 [2022-07-11 14:47:27] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:07:37] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 15:07:46] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 15:08:02] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:08:51] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:09:00] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@12858400
+[2022-07-11 15:09:06] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=2, apellido=Malone, nombre=Kevin, dni=22444666, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@4410b162)
+[2022-07-11 15:09:06] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 15:09:06] [INFO] [OdontologoService:186] Se actualizará un turno. Datos originales: ar.com.dami.odontologica.dto.TurnoDTO@5b880352
+[2022-07-11 15:09:06] [INFO] [OdontologoService:194] Datos actuales: ar.com.dami.odontologica.dto.TurnoDTO@13f65f53
+[2022-07-11 15:09:08] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:09:10] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@3ee98050
+[2022-07-11 15:09:12] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=1, apellido= Scott, nombre=Michael, dni=20555444, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@37484044)
+[2022-07-11 15:09:12] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=2, nombre=Martinez, apellido=Oscar, matricula=323213)
+[2022-07-11 15:09:12] [INFO] [OdontologoService:186] Se actualizará un turno. Datos originales: ar.com.dami.odontologica.dto.TurnoDTO@3fe961a6
+[2022-07-11 15:09:12] [INFO] [OdontologoService:194] Datos actuales: ar.com.dami.odontologica.dto.TurnoDTO@38beb34f
+[2022-07-11 15:09:14] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:20] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:21] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:30] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:32] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:40] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:44] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:46] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:51] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:10:54] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:07] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:12] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:14] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:16] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:48] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:50] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 15:11:53] [INFO] [OdontologoService:115] Se listaron todos los turnos.
