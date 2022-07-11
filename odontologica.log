@@ -3121,3 +3121,31 @@ update odontologo set apellido=?, matricula=?, nombre=? where id=? [23505-214]];
 [2022-07-11 15:36:51] [INFO] [OdontologoService:131] Se actualizará un odontólogo. Datos originales: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
 [2022-07-11 15:36:51] [INFO] [OdontologoService:139] Datos actuales: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444665)
 [2022-07-11 15:36:53] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 16:12:53] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=1, apellido=Scott, nombre=Michael, dni=20555444, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@5b9df3b3)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 16:12:53] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=1, apellido=Scott, nombre=Michael, dni=20555444, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@530e08a7)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=1, nombre=Dwight, apellido=Schrute, matricula=444666)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@45302e66
+[2022-07-11 16:12:53] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@45302e66
+[2022-07-11 16:12:53] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=2, apellido=Malone, nombre=Kevin, dni=22444666, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@5c2ae7d7)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=2, nombre=Martinez, apellido=Oscar, matricula=323213)
+[2022-07-11 16:12:53] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=2, apellido=Malone, nombre=Kevin, dni=22444666, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@30a4a111)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=2, nombre=Martinez, apellido=Oscar, matricula=323213)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@1299c874
+[2022-07-11 16:12:53] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@1299c874
+[2022-07-11 16:12:53] [INFO] [PacienteService:45] Se guardó el paciente: PacienteDTO(id=3, apellido=Martin, nombre=Angela, dni=24777888, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@66576bd2)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:41] Se guardó el odontólogo: OdontologoDTO(id=3, nombre=Toby, apellido=Flenderson, matricula=444477)
+[2022-07-11 16:12:53] [INFO] [PacienteService:61] Se buscó por Id el paciente: PacienteDTO(id=3, apellido=Martin, nombre=Angela, dni=24777888, fechaIngreso=2022-07-11, domicilio=ar.com.dami.odontologica.entity.Domicilio@469bd719)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:57] Se buscó por Id el odontólogo: OdontologoDTO(id=3, nombre=Toby, apellido=Flenderson, matricula=444477)
+[2022-07-11 16:12:53] [INFO] [OdontologoService:100] Se buscó por Id el turno: ar.com.dami.odontologica.dto.TurnoDTO@19bbb216
+[2022-07-11 16:12:53] [INFO] [OdontologoService:84] Se registró el siguiente turno: ar.com.dami.odontologica.dto.TurnoDTO@19bbb216
+[2022-07-11 16:13:05] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 16:13:08] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 16:13:14] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 16:23:46] [INFO] [OdontologoService:89] Se listaron todos los odontólogos.
+[2022-07-11 16:23:48] [INFO] [PacienteService:92] Se listaron todos los pacientes.
+[2022-07-11 16:23:50] [INFO] [OdontologoService:115] Se listaron todos los turnos.
+[2022-07-11 16:24:12] [ERROR] [OdontologoService:64] could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_WR6KXHPAYD3JDLUDSYTBN8AG_INDEX_5 ON PUBLIC.PACIENTE(DNI NULLS FIRST) VALUES ( /* 1 */ '20555444' )"; SQL statement:
+insert into paciente (apellido, dni, domicilio_id, fecha_ingreso, nombre, id) values (?, ?, ?, ?, ?, ?) [23505-214]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-07-11 16:25:30] [ERROR] [OdontologoService:68] could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_WR6KXHPAYD3JDLUDSYTBN8AG_INDEX_5 ON PUBLIC.PACIENTE(DNI NULLS FIRST) VALUES ( /* 1 */ `20555444` )"; SQL statement:
+insert into paciente (apellido, dni, domicilio_id, fecha_ingreso, nombre, id) values (?, ?, ?, ?, ?, ?) [23505-214]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
