@@ -3,6 +3,7 @@ package ar.com.dami.odontologica.controller;
 import ar.com.dami.odontologica.dto.TurnoDTO;
 import ar.com.dami.odontologica.service.*;
 import ar.com.dami.odontologica.util.Jsons;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class TurnoController {
     @Autowired
     private ITurnoService turnoService;
 
-
+    @Operation(summary = "Buscar un turno por su Id")
     @GetMapping("/{id}")
     public ResponseEntity<TurnoDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
 
@@ -26,6 +27,7 @@ public class TurnoController {
 
     }
 
+    @Operation(summary = "Listar todos los turno")
     @GetMapping
     public ResponseEntity<List<TurnoDTO>> listarTodos(){
 
@@ -33,7 +35,7 @@ public class TurnoController {
 
     }
 
-
+    @Operation(summary = "Dar de alta un turno")
     @PostMapping
     public ResponseEntity<TurnoDTO> guardar(@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException, DatosIncorrectosException, ConflictoException {
 
@@ -41,6 +43,7 @@ public class TurnoController {
 
     }
 
+    @Operation(summary = "Eliminar el turno con el Id indicado")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
 
@@ -51,6 +54,7 @@ public class TurnoController {
 
     }
 
+    @Operation(summary = "Actualizar los datos de un turno")
     @PutMapping
     public ResponseEntity<TurnoDTO> actualizar (@RequestBody TurnoDTO turnoDTO) throws NoEncontradoException, DatosIncorrectosException, ConflictoException {
 

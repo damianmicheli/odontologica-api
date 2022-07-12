@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,10 +18,18 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDePaciente")
     @SequenceGenerator(name = "secuenciaDePaciente", sequenceName = "PACIENTE_SEQUENCE", allocationSize = 1)
     private Long id;
+
+    @NotBlank
     private String apellido;
+
+    @NotBlank
     private String nombre;
+
+    @NotBlank
     @Column(unique = true)
     private String dni;
+
+    @NotBlank
     private LocalDate fechaIngreso;
 
     @OneToOne(cascade = CascadeType.ALL)

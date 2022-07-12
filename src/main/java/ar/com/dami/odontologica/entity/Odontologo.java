@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter @Setter
@@ -15,8 +17,14 @@ public class Odontologo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeOdontologo")
     @SequenceGenerator(name = "secuenciaDeOdontologo", sequenceName = "ODONTOLOGO_SEQUENCE", allocationSize = 1)
     private Long id;
+
+    @NotBlank
     private String nombre;
+
+    @NotBlank
     private String apellido;
+
+    @NotBlank
     @Column(unique = true)
     private String matricula;
 
