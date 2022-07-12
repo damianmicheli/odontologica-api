@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
 
       //con fetch invocamos a la API de odontologos con el método GET
       //nos devolverá un JSON con una colección de odontologos
-      const url = '/odontologos';
+      const url = URL_BASE + '/odontologos';
       const settings = {
         method: 'GET'
       }
@@ -49,13 +49,14 @@ window.addEventListener('load', function () {
                     '<td>' + deleteButton + '</td>';
 
         };
-
-    })
-    })
+        document.getElementById("loading").style.display = "none";
+        })
+   
+  })
 
     (function(){
       let pathname = window.location.pathname;
-      if (pathname == "/odontologoList.html") {
+      if (pathname == "/odontologo-lista.html") {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })

@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
 
       //con fetch invocamos a la API de pacientes con el método GET
       //nos devolverá un JSON con una colección de pacientes
-      const url = '/pacientes';
+      const url = URL_BASE + '/pacientes';
       const settings = {
         method: 'GET'
       }
@@ -46,7 +46,7 @@ window.addEventListener('load', function () {
                     '<td class=\"td_nombre\">' + paciente.nombre.toUpperCase() + '</td>' +
                     '<td class=\"td_apellido\">' + paciente.apellido.toUpperCase() + '</td>' +
                     '<td class=\"td_dni\">' + paciente.dni.toUpperCase() + '</td>' +
-                    '<td class=\"td_fecha_ingreso\">' + paciente.fechaIngreso + '</td>' +
+                    '<td class=\"td_fecha_ingreso\">' + convertirFecha(paciente.fechaIngreso) + '</td>' +
                     '<td class=\"td_calle\">' + paciente.domicilio.calle.toUpperCase() + '</td>' +
                     '<td class=\"td_numero\">' + paciente.domicilio.numero.toUpperCase() + '</td>' +
                     '<td class=\"td_localidad\">' + paciente.domicilio.localidad.toUpperCase() + '</td>' +
@@ -54,16 +54,24 @@ window.addEventListener('load', function () {
                     '<td>' + deleteButton + '</td>';
 
         };
+        document.getElementById("loading").style.display = "none";
+    })
+    })
 
-    })
-    })
+    
+
+   
 
     (function(){
       let pathname = window.location.pathname;
-      if (pathname == "/pacienteList.html") {
+      if (pathname == "/paciente-lista.html") {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })
 
+    function convertirFecha(fecha) {
+      return fecha?fecha.split("-").reverse().join("/"):"?";
+    }
 
+    
     })

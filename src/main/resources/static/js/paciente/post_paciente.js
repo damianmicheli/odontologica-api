@@ -1,4 +1,5 @@
 window.addEventListener("load", function () {
+
   //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
   //los datos que el usuario cargará del nuevo paciente
   const formulario = document.querySelector("#add_new_paciente");
@@ -14,19 +15,18 @@ window.addEventListener("load", function () {
       nombre: document.querySelector("#nombre").value,
       apellido: document.querySelector("#apellido").value,
       dni: document.querySelector("#dni").value,
-      fechaIngreso: convertirFecha(
-        document.querySelector("#fecha-ingreso").value
-      ),
+      fechaIngreso: convertirFecha(document.querySelector("#fecha-ingreso").value),
       domicilio: {
         calle: document.querySelector("#calle").value,
         numero: document.querySelector("#numero").value,
         localidad: document.querySelector("#localidad").value,
-        provincia: document.querySelector("#provincia").value,
-      },
+        provincia: document.querySelector("#provincia").value
+      }
     };
+    
     //invocamos utilizando la función fetch la API pacientes con el método POST que guardará
     //el paciente que enviaremos en formato JSON
-    const url = "/pacientes";
+    const url = URL_BASE + '/pacientes';
     const settings = {
       method: "POST",
       headers: {
@@ -35,45 +35,39 @@ window.addEventListener("load", function () {
       body: JSON.stringify(formData),
     };
 
-    let error = false;
-    fetch(url, settings)
-      .then((res) => {
+    let notOk = false;
+    fetch(url,settings)
+    .then(res => {
+        notOk = !res.ok;
+        return res.json()
+    })
+    .then(data =>{
+        if (notOk) {
+            //Si hay algun error se muestra un mensaje diciendo que el paciente
+            //no se pudo guardar y se intente nuevamente
 
-        if (!res.ok) {
-          console.log("Ocurrió un error de tipo " + res.status);
-          error = true;
-        } else {
-        
-        return res.json();
+            Swal.fire("Maldición!", data, "error");
         }
-      })
-      .then((data) => {
-        if (error) {
-          //Si hay algun error se muestra un mensaje diciendo que el paciente
-          //no se pudo guardar y se intente nuevamente
-          Swal.fire("Maldición!", "Hubo un problema con los datos!", "error");
-        } else {
-          //Si no hay ningun error se muestra un mensaje diciendo que el paciente
-          //se agrego bien
+        else{
+             //Si no hay ningun error se muestra un mensaje diciendo que el paciente
+             //se agrego bien
 
-          Swal.fire(
-            "Correcto!",
-            "Ya registramos a " + data.nombre + " " + data.apellido + " como nuevo paciente!",
-            "success"
-          );
-          //se dejan todos los campos vacíos por si se quiere ingresar otro paciente
-          resetUploadForm();
+             Swal.fire(
+                "Correcto!",
+                "Ya registramos a <strong>" + data.nombre + " " + data.apellido + "</strong> como nuevo <strong>paciente</strong>!",
+                "success"
+              );
+             resetUploadForm();               
         }
-      })
-      .catch((e) => {
-        //Si hay algun error se muestra un mensaje diciendo que el paciente
-        //no se pudo guardar y se intente nuevamente
-        Swal.fire(
-          "Maldición!",
-          "No pudimos registrar este paciente por este extraño error: " + e,
-          "error"
-        );
-      });
+    })
+
+        .catch(error => {
+                //Si hay algun error se muestra un mensaje diciendo que el paciente
+                //no se pudo guardar y se intente nuevamente
+
+                  Swal.fire("Maldición!", "Hubo un problema inesperado!", "error");
+            }
+        )
   });
 
   function fechaActual() {
@@ -85,6 +79,8 @@ window.addEventListener("load", function () {
     fecha = dd + "/" + mm + "/" + yyyy;
     return fecha;
   }
+
+
 
   function convertirFecha(fecha) {
     return fecha.split("/").reverse().join("-");
@@ -105,7 +101,7 @@ window.addEventListener("load", function () {
     let pathname = window.location.pathname;
     if (pathname === "/") {
       document.querySelector(".nav .nav-item a:first").addClass("active");
-    } else if (pathname == "/pacienteList.html") {
+    } else if (pathname == "/paciente-lista.html") {
       document.querySelector(".nav .nav-item a:last").addClass("active");
     }
   })();
