@@ -15,7 +15,7 @@ Tecnologías utilizadas:
 * Maven
 * JUnit
 
-**Frontend**
+**Frontend** (Acá: https://github.com/damianmicheli/odontologica-frontend )
 * Javascript
 * HTML
 * CSS
